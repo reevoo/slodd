@@ -39,7 +39,7 @@ unless options[:url] || options[:file]
 end
 
 unless options[:database]
-  puts "you must specify a database or use the -r flag"
+  puts "you must specify a database"
   exit 1
 end
 
