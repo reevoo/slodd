@@ -35,7 +35,7 @@ module Slodd
 
       begin
         create_db.call @database_settings
-      rescue Mysql::Error => sqlerr
+      rescue Mysql2::Error => sqlerr
         $stderr.puts sqlerr.error
         $stderr.puts "Couldn't create database for #{@database_settings.inspect}, charset: utf8, collation: utf8_unicode_ci"
       end
