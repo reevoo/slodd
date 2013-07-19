@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+
+require 'slodd'
+require 'optparse'
+options = Hash.new
+
+OptionParser.new do |opt|
+  opt.on('-d', '--database DATABASE', "Database Name") do |d|
+    options[:database] = d
+  end
+
+  opt.on('-s', '--schema URI', "URI for schema.rb") do |s|
+    options[:url] = s
+  end
+
+  opt.on( '-f', '--file-schema-path PATH', 'Path to schema.rb') do |opt|
+    options[:file] = f
+  end
+
+  opt.on('-u', '--username USERNAME', "MySQL Username") do |u|
+    options[:username] = u
+  end
+
+  opt.on('-p', '--password PASSWORD', "MySQL Password") do |p|
+    options[:password] = p
+  end
+
+  opt.on('-h', '--host HOST', "MySQL Hostname") do |h|
+    options[:host] = h
+  end
+end.parse!
+
+puts options[:url]
+puts options[:file]
+
+unless options[:url] || options[:file]
+  puts "you must specify a file or a url"
+  exit 1
+end
+
+unless options[:database]
+  puts "you must specify a database or use the -r flag"
+  exit 1
+end
+
+Slodd::Base.new(options).run!
