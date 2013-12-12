@@ -13,7 +13,7 @@ OptionParser.new do |opt|
     options[:url] = s
   end
 
-  opt.on( '-f', '--file-schema-path PATH', 'Path to schema.rb') do |opt|
+  opt.on( '-f', '--file-schema-path PATH', 'Path to schema.rb') do |f|
     options[:file] = f
   end
 
