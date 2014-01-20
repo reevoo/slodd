@@ -4,6 +4,8 @@ require "active_record"
 require "open-uri"
 require "mysql2"
 
+require 'slodd/github'
+
 module Slodd
   class Base
     def initialize(options)
