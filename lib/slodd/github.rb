@@ -4,12 +4,12 @@ module Slodd
   class Github
     attr_accessor :owner, :repo, :path, :token, :ref
 
-    def initialize(owner, repo, path, token, ref = nil)
-      self.owner = owner
-      self.repo  = repo
-      self.path  = path
-      self.token = token
-      self.ref   = ref
+    def initialize(attrs)
+      self.owner = attrs.fetch(:owner)
+      self.repo  = attrs.fetch(:repo)
+      self.token = attrs.fetch(:token)
+      self.path  = attrs[:path] || "db/schema.rb"
+      self.ref   = attrs[:ref]
     end
 
     def schema

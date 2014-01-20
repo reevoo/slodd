@@ -3,14 +3,20 @@ require "spec_helper"
 describe Slodd::Github do
   let(:owner) { "errm" }
   let(:repo)  { "awesome_rails_app" }
-  let(:path)  { "db/schema.rb" }
+  let(:path)  { "database/schema.rb" }
   let(:token) { "secret-oauth-token" }
   let(:ref)   { nil }
 
   let(:schema) { double(read: nil) }
 
   subject do
-    described_class.new(owner, repo, path, token, ref)
+    described_class.new(
+      owner: owner,
+      repo: repo,
+      path: path,
+      token: token,
+      ref: ref
+    )
   end
 
   describe "#schema" do
@@ -47,6 +53,21 @@ describe Slodd::Github do
         allow(subject).to receive(:open) do |url, _|
           expect(url).to eq(
             "https://api.github.com/repos/#{owner}/#{repo}/contents/#{path}"
+          )
+          schema
+        end
+
+        subject.schema
+      end
+    end
+
+    context "default path" do
+      let(:path) { nil }
+
+      it "hits a url with the default path" do
+        allow(subject).to receive(:open) do |url, _|
+          expect(url).to eq(
+            "https://api.github.com/repos/#{owner}/#{repo}/contents/db/schema.rb"
           )
           schema
         end
