@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["ed.robinson@reevoo.com"]
   gem.description   = %q{Schema Loading On Dependent Databases}
   gem.summary       = %q{Schema Loading On Dependent Databases}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/errm/slodd"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
