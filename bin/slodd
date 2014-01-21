@@ -2,45 +2,43 @@
 
 require 'slodd'
 require 'optparse'
-options = Hash.new
 
 OptionParser.new do |opt|
-  opt.on('-d', '--database DATABASE', "Database Name") do |d|
-    options[:database] = d
+  opt.on('-d', '--database DATABASES', "Database names") do |d|
+    Slodd::Config.databases = d
   end
 
   opt.on('-s', '--schema URI', "URI for schema.rb") do |s|
-    options[:url] = s
+    Slodd::Config.url = s
+  end
+
+  opt.on('-g', '--github USER/REPO', "github repo") do |g|
+    Slodd::Config.github = g
+  end
+
+  opt.on('-t', '--token TOKEN', "github token") do |t|
+    Slodd::Config.token = t
+  end
+
+  opt.on('-r', '--ref REF', "github ref") do |r|
+    Slodd::Config.ref = g
   end
 
   opt.on( '-f', '--file-schema-path PATH', 'Path to schema.rb') do |f|
-    options[:file] = f
+    Slodd::Config.path = f
   end
 
   opt.on('-u', '--username USERNAME', "MySQL Username") do |u|
-    options[:username] = u
+    Slodd::Config.username = u
   end
 
   opt.on('-p', '--password PASSWORD', "MySQL Password") do |p|
-    options[:password] = p
+    Slodd::Config.password = p
   end
 
   opt.on('-h', '--host HOST', "MySQL Hostname") do |h|
-    options[:host] = h
+    Slodd::Config.host = h
   end
 end.parse!
 
-puts options[:url]
-puts options[:file]
-
-unless options[:url] || options[:file]
-  puts "you must specify a file or a url"
-  exit 1
-end
-
-unless options[:database]
-  puts "you must specify a database"
-  exit 1
-end
-
-Slodd::Base.new(options).run!
+Slodd::Runner.run!
