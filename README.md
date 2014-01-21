@@ -9,16 +9,20 @@ Examples:
 
 ###Loading schema from github:
 
-slodd -g errm/awesome_rails_app -t my-secret-oauth-token -d "awesome_app awesome_test"
+`slodd -g errm/awesome_rails_app -t my-secret-oauth-token -d "awesome_app awesome_test"`
 
 or from a specific branch:
 
-slodd -g errm/awesome_rails_app -t my-secret-oauth-token -r my-brillant-branch -d "awesome_app awesome_test"
+`slodd -g errm/awesome_rails_app -t my-secret-oauth-token -r my-brillant-branch -d "awesome_app awesome_test"`
 
 ###Loading schema from a file (defaults to db/schema.rb):
 
-slodd -d awesome_test
+`slodd -d awesome_test`
 
 or
 
-slodd -f db/second_database.schema.rb -d awesome_test
+`slodd -f db/second_database.schema.rb -d awesome_test`
+
+###Downloading a schema (or any text file) from github
+
+`gurl -g errm/awesome_rails_app -t my-secret-oauth-token -r my-fancy-branch`
