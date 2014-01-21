@@ -1,0 +1,6 @@
+StringLiterals:
+  EnforcedStyle: "double_quotes"
+Documentation:
+  Enabled: false
+Eval:
+  Enabled: false

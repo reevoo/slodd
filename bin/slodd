@@ -1,42 +1,43 @@
 #!/usr/bin/env ruby
+# encoding: utf-8
 
-require 'slodd'
-require 'optparse'
+require "slodd"
+require "optparse"
 
 OptionParser.new do |opt|
-  opt.on('-d', '--database DATABASES', 'Database names') do |d|
+  opt.on("-d", "--database DATABASES", "Database names") do |d|
     Slodd::Config.databases = d
   end
 
-  opt.on('-s', '--schema URI', 'URI for schema.rb') do |s|
+  opt.on("-s", "--schema URI", "URI for schema.rb") do |s|
     Slodd::Config.url = s
   end
 
-  opt.on('-g', '--github USER/REPO', 'github repo') do |g|
+  opt.on("-g", "--github USER/REPO", "github repo") do |g|
     Slodd::Config.github = g
   end
 
-  opt.on('-t', '--token TOKEN', 'github token') do |t|
+  opt.on("-t", "--token TOKEN", "github token") do |t|
     Slodd::Config.token = t
   end
 
-  opt.on('-r', '--ref REF', 'github ref') do |r|
+  opt.on("-r", "--ref REF", "github ref") do |r|
     Slodd::Config.ref = g
   end
 
-  opt.on( '-f', '--file-schema-path PATH', 'Path to schema.rb') do |f|
+  opt.on("-f", "--file-schema-path PATH", "Path to schema.rb") do |f|
     Slodd::Config.path = f
   end
 
-  opt.on('-u', '--username USERNAME', 'MySQL Username') do |u|
+  opt.on("-u", "--username USERNAME", "MySQL Username") do |u|
     Slodd::Config.username = u
   end
 
-  opt.on('-p', '--password PASSWORD', 'MySQL Password') do |p|
+  opt.on("-p", "--password PASSWORD", "MySQL Password") do |p|
     Slodd::Config.password = p
   end
 
-  opt.on('-h', '--host HOST', 'MySQL Hostname') do |h|
+  opt.on("-h", "--host HOST", "MySQL Hostname") do |h|
     Slodd::Config.host = h
   end
 end.parse!

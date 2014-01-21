@@ -1,3 +1,4 @@
+# encoding: utf-8
 require "spec_helper"
 
 describe Slodd::Github do
@@ -19,12 +20,14 @@ describe Slodd::Github do
     )
   end
 
+  let(:expected_url) do
+    "https://api.github.com/repos/#{owner}/#{repo}/contents/#{path}"
+  end
+
   describe "#schema" do
     it "hits the correct url" do
       allow(subject).to receive(:open) do |url, _|
-        expect(url).to eq(
-          "https://api.github.com/repos/#{owner}/#{repo}/contents/#{path}"
-        )
+        expect(url).to eq(expected_url)
         schema
       end
 
@@ -36,9 +39,7 @@ describe Slodd::Github do
 
       it "hits a url including the ref param" do
         allow(subject).to receive(:open) do |url, _|
-          expect(url).to eq(
-            "https://api.github.com/repos/#{owner}/#{repo}/contents/#{path}?ref=#{ref}"
-          )
+          expect(url).to eq(expected_url + "?ref=#{ref}")
           schema
         end
 

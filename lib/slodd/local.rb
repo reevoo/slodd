@@ -1,3 +1,4 @@
+# encoding: utf-8
 module Slodd
   class Local
     attr_accessor :path

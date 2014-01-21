@@ -1,8 +1,10 @@
+# encoding: utf-8
 require "active_support/core_ext"
 
 module Slodd
   module Config
-    mattr_accessor :path, :github, :username, :password, :host, :url, :token, :ref
+    mattr_accessor :path, :github, :username, :password,
+                   :host, :url, :token, :ref
     mattr_writer :databases
 
     def self.defaults
