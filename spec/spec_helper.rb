@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'slodd'
 
 RSpec.configure do |config|
