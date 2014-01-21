@@ -2,6 +2,7 @@ Schema Loading On Dependent Databases
 =====================================
 
 [![Build Status](https://travis-ci.org/errm/slodd.png?branch=v0.1.0)](https://travis-ci.org/errm/slodd)
+[![Gem Version](https://badge.fury.io/rb/slodd.png)](http://badge.fury.io/rb/slodd)
 
 Slodd is a lightweight tool for loading an activerecord schema.rb into a database, like rake db:schema:load but more awesome.
 
