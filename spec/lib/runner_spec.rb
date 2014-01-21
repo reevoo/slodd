@@ -5,7 +5,7 @@ describe Slodd::Runner do
 
   describe "#run" do
     before do
-      Slodd::Config.path = File.join(File.dirname(__FILE__), "..", "support", "schema.rb")
+      Slodd::Config.path = schema_path
       Slodd::Config.databases = "slodd_test"
     end
 
@@ -14,16 +14,21 @@ describe Slodd::Runner do
     end
 
     it "creates the database ready for testing" do
-      subject.run!
+      output = capture_stdout do
+        subject.run!
+      end
+
+      expect(output).to match /create_database\(slodd_test\)/
 
       expect(Test.count).to eq 0
-      test = Test.create(name: "James")
+      Test.create(name: "James")
 
       expect(Test.count).to eq 1
       expect(Test.last.name).to eq "James"
       expect(`mysql -uroot -e "show databases;"`).to match /slodd_test/
 
       subject.run!
+
       expect(Test.count).to eq 0
     end
 
@@ -33,7 +38,12 @@ describe Slodd::Runner do
       end
 
       it "creates both databases" do
-        subject.run!
+        output = capture_stdout do
+          subject.run!
+        end
+
+        expect(output).to match /create_database\(slodd_test\)/
+        expect(output).to match /create_database\(slodd_test_2\)/
 
         databases = `mysql -uroot -e "show databases;"`
         expect(databases).to match /slodd_test/
@@ -43,7 +53,8 @@ describe Slodd::Runner do
 
     context "when something is failing" do
       before do
-        allow(ActiveRecord::Base).to receive(:establish_connection).and_raise(Mysql2::Error, "mysql error")
+        allow(ActiveRecord::Base).to receive(:establish_connection)
+                                       .and_raise(Mysql2::Error, "mysql error")
       end
 
       it "ouputs a usefull message to stderr" do

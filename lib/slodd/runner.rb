@@ -20,6 +20,7 @@ module Slodd
 
     private
     def create_database(database)
+      puts "create_database(#{database})"
       options = {charset: 'utf8', collation: 'utf8_unicode_ci'}
 
       begin
