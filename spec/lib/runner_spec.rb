@@ -19,14 +19,14 @@ describe Slodd::Runner do
         subject.run!
       end
 
-      expect(output).to match /create_database\(slodd_test\)/
+      expect(output).to match(/create_database\(slodd_test\)/)
 
       expect(Test.count).to eq 0
       Test.create(name: "James")
 
       expect(Test.count).to eq 1
       expect(Test.last.name).to eq "James"
-      expect(`mysql -uroot -e "show databases;"`).to match /slodd_test/
+      expect(`mysql -uroot -e "show databases;"`).to match(/slodd_test/)
 
       subject.run!
 
@@ -43,12 +43,12 @@ describe Slodd::Runner do
           subject.run!
         end
 
-        expect(output).to match /create_database\(slodd_test\)/
-        expect(output).to match /create_database\(slodd_test_2\)/
+        expect(output).to match(/create_database\(slodd_test\)/)
+        expect(output).to match(/create_database\(slodd_test_2\)/)
 
         databases = `mysql -uroot -e "show databases;"`
-        expect(databases).to match /slodd_test/
-        expect(databases).to match /slodd_test_2/
+        expect(databases).to match(/slodd_test/)
+        expect(databases).to match(/slodd_test_2/)
       end
     end
 
@@ -62,7 +62,7 @@ describe Slodd::Runner do
         message = capture_stderr do
           subject.run!
         end
-        expect(message).to match /mysql error/
+        expect(message).to match(/mysql error/)
       end
     end
   end
