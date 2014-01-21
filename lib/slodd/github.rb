@@ -8,13 +8,15 @@ module Slodd
       self.owner = attrs.fetch(:owner)
       self.repo  = attrs.fetch(:repo)
       self.token = attrs.fetch(:token)
-      self.path  = attrs[:path] || "db/schema.rb"
+      self.path  = attrs.fetch(:path)
       self.ref   = attrs[:ref]
     end
 
     def schema
       @schema ||= open(url, headers).read
     end
+
+    private
 
     def url
       "https://api.github.com/repos/#{owner}/#{repo}/contents/#{path}#{branch}"

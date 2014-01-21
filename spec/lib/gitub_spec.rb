@@ -46,36 +46,6 @@ describe Slodd::Github do
       end
     end
 
-    context "with a blank ref" do
-      let(:ref) { "" }
-
-      it "hits a url without the ref param" do
-        allow(subject).to receive(:open) do |url, _|
-          expect(url).to eq(
-            "https://api.github.com/repos/#{owner}/#{repo}/contents/#{path}"
-          )
-          schema
-        end
-
-        subject.schema
-      end
-    end
-
-    context "default path" do
-      let(:path) { nil }
-
-      it "hits a url with the default path" do
-        allow(subject).to receive(:open) do |url, _|
-          expect(url).to eq(
-            "https://api.github.com/repos/#{owner}/#{repo}/contents/db/schema.rb"
-          )
-          schema
-        end
-
-        subject.schema
-      end
-    end
-
     it "uses the correct token" do
       allow(subject).to receive(:open) do |_, headers|
         expect(headers["Authorization"]).to eq "token #{token}"
