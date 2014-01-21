@@ -28,11 +28,14 @@ end
 
 def capture_stderr
   old_stderr = $stderr
+  old_stdout = $stdout
   fake_stderr = StringIO.new
+  $stdout = StringIO.new
   $stderr = fake_stderr
   yield
   fake_stderr.string
 ensure
+  $stdout = old_stdout
   $stderr = old_stderr
 end
 

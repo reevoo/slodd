@@ -28,7 +28,9 @@ describe Slodd::Runner do
       expect(Test.last.name).to eq "James"
       expect(`mysql -uroot -e "show databases;"`).to match(/slodd_test/)
 
-      subject.run!
+      capture_stdout do
+        subject.run!
+      end
 
       expect(Test.count).to eq 0
     end
