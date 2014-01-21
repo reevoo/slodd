@@ -1,6 +1,8 @@
 require "spec_helper"
 
 describe Slodd::Runner do
+  subject { described_class }
+
   describe "#run" do
     before do
       Slodd::Config.path = File.join(File.dirname(__FILE__), "..", "support", "schema.rb")
@@ -36,6 +38,19 @@ describe Slodd::Runner do
         databases = `mysql -uroot -e "show databases;"`
         expect(databases).to match /slodd_test/
         expect(databases).to match /slodd_test_2/
+      end
+    end
+
+    context "when something is failing" do
+      before do
+        allow(ActiveRecord::Base).to receive(:establish_connection).and_raise(Mysql2::Error, "mysql error")
+      end
+
+      it "ouputs a usefull message to stderr" do
+        message = capture_stderr do
+          subject.run!
+        end
+        expect(message).to match /mysql error/
       end
     end
   end
