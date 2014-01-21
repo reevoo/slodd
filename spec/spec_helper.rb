@@ -7,3 +7,15 @@ RSpec.configure do |config|
   config.order = 'random'
 end
 
+module Slodd
+  module Config
+    def self.reset
+      defaults
+      self.github = nil
+      self.password = nil
+      self.url = nil
+      self.token = nil
+      self.ref = nil
+    end
+  end
+end
