@@ -9,13 +9,13 @@ module Slodd
       self.path = "db/schema.rb"
       self.username = "root"
       self.host = "localhost"
+      self.databases = nil
     end
 
     defaults
 
     def self.databases
-      return @@databases.split if defined?(@@databases)
-      []
+      @@databases ? @@databases.split : []
     end
 
     def self.database_settings
@@ -47,25 +47,14 @@ module Slodd
     end
 
     def self.attributes
-       {
-          owner: owner,
-          repo: repo,
-          token: token,
-          path: path,
-          ref: ref,
-          url: url,
-        }.delete_if { |k, v| v.nil? }
-    end
-
-    def self.reset
-      defaults
-      self.github = nil
-      self.password = nil
-      self.url = nil
-      self.token = nil
-      self.databases = nil
-      self.ref = nil
-      instance_eval { remove_class_variable "@@databases" } if defined?(@@databases)
+      {
+        owner: owner,
+        repo: repo,
+        token: token,
+        path: path,
+        ref: ref,
+        url: url,
+      }.delete_if { |_, v| v.nil? }
     end
   end
 end

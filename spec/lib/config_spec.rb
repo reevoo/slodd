@@ -3,6 +3,19 @@ require "spec_helper"
 describe Slodd::Config do
   subject { described_class }
 
+  module Slodd
+    module Config
+      def self.reset
+        defaults
+        self.github = nil
+        self.password = nil
+        self.url = nil
+        self.token = nil
+        self.ref = nil
+      end
+    end
+  end
+
   after(:each) do
     subject.reset
   end
