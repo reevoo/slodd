@@ -106,7 +106,7 @@ describe Slodd::Config do
             repo: "awesome_rails_app",
             token: "oauth token",
             path: "db/schema.rb",
-            ref: "my-awesome-branch",
+            ref: "my-awesome-branch"
           }
           expect(subject.attributes).to eq attrs
         end
@@ -115,7 +115,7 @@ describe Slodd::Config do
       context "Local" do
         it "returns all the arguments needed by Local" do
           attrs = {
-            path: "db/schema.rb",
+            path: "db/schema.rb"
           }
           expect(subject.attributes).to eq attrs
         end
@@ -126,7 +126,7 @@ describe Slodd::Config do
           subject.url = "http://some.url.com/db/schema.rb"
           attrs = {
             path: "db/schema.rb",
-            url: "http://some.url.com/db/schema.rb",
+            url: "http://some.url.com/db/schema.rb"
           }
           expect(subject.attributes).to eq attrs
         end
@@ -157,7 +157,7 @@ describe Slodd::Config do
           settings = {
             adapter: "mysql2",
             host: "localhost",
-            username: "root",
+            username: "root"
           }
           expect(subject.database_settings).to eq settings
         end
@@ -171,7 +171,7 @@ describe Slodd::Config do
             adapter: "mysql2",
             host: "localhost",
             username: "root",
-            password: "brian",
+            password: "brian"
           }
           expect(subject.database_settings).to eq settings
         end

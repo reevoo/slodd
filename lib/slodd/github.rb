@@ -30,7 +30,7 @@ module Slodd
     def headers
       {
         "Accept" => "application/vnd.github.3.raw",
-        "Authorization" => "token #{token}",
+        "Authorization" => "token #{token}"
       }
     end
   end

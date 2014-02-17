@@ -55,7 +55,7 @@ module Slodd
         token: token,
         path: path,
         ref: ref,
-        url: url,
+        url: url
       }.delete_if { |_, v| v.nil? }
     end
   end
