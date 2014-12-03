@@ -136,12 +136,12 @@ describe Slodd::Config do
 
     describe ".databases" do
       it "defaults to empty array" do
-        expect(subject.databases).to eq  []
+        expect(subject.databases).to eq []
       end
 
       it "is an array of names" do
         subject.databases = "db1 db2 db3"
-        expect(subject.databases).to eq %w[db1 db2 db3]
+        expect(subject.databases).to eq %w(db1 db2 db3)
       end
 
       it "is an array of one name" do

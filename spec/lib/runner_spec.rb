@@ -57,7 +57,7 @@ describe Slodd::Runner do
     context "when something is failing" do
       before do
         allow(ActiveRecord::Base).to receive(:establish_connection)
-                                       .and_raise(Mysql2::Error, "mysql error")
+          .and_raise(Mysql2::Error, "mysql error")
       end
 
       it "ouputs a usefull message to stderr" do

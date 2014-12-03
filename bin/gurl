@@ -14,7 +14,7 @@ OptionParser.new do |opt|
   end
 
   opt.on("-r", "--ref REF", "github ref") do |r|
-    Slodd::Config.ref = g
+    Slodd::Config.ref = r
   end
 
   opt.on("-f", "--file-schema-path PATH", "Path to schema.rb") do |f|

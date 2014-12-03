@@ -1,8 +1,8 @@
 require "bundler/gem_tasks"
-require 'rspec/core/rake_task'
-require 'rubocop/rake_task'
+require "rspec/core/rake_task"
+require "rubocop/rake_task"
 
-Rubocop::RakeTask.new(:rubocop)
+RuboCop::RakeTask.new(:rubocop)
 RSpec::Core::RakeTask.new(:spec)
 
-task :default => [:spec, :rubocop]
+task default: [:spec, :rubocop]
