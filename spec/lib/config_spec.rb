@@ -131,7 +131,6 @@ describe Slodd::Config do
           expect(subject.attributes).to eq attrs
         end
       end
-
     end
 
     describe ".databases" do
@@ -152,7 +151,6 @@ describe Slodd::Config do
 
     describe ".database_settings" do
       context "without a password" do
-
         it "returns the settings" do
           settings = {
             adapter: "mysql2",
@@ -161,7 +159,6 @@ describe Slodd::Config do
           }
           expect(subject.database_settings).to eq settings
         end
-
       end
 
       context "with a password" do
