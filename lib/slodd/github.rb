@@ -1,5 +1,5 @@
 # encoding: utf-8
-require "open-uri"
+require 'open-uri'
 
 module Slodd
   class Github
@@ -29,8 +29,8 @@ module Slodd
 
     def headers
       {
-        "Accept" => "application/vnd.github.3.raw",
-        "Authorization" => "token #{token}"
+        'Accept' => 'application/vnd.github.3.raw',
+        'Authorization' => "token #{token}",
       }
     end
   end

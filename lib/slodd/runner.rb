@@ -1,6 +1,6 @@
 # encoding: utf-8
-require "active_record"
-require "mysql2"
+require 'active_record'
+require 'mysql2'
 
 module Slodd
   class Runner
@@ -15,7 +15,7 @@ module Slodd
     def run!
       Config.databases.each do |database|
         create_database(database)
-        eval(schema)
+        eval(schema) # rubocop:disable Lint/Eval
       end
     end
 
@@ -39,7 +39,7 @@ module Slodd
     end
 
     def options
-      { charset: "utf8", collation: "utf8_unicode_ci" }
+      { charset: 'utf8', collation: 'utf8_unicode_ci' }
     end
 
     def error_message(sqlerr, database)

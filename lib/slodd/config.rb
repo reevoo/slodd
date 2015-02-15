@@ -1,5 +1,5 @@
 # encoding: utf-8
-require "active_support/core_ext/module/attribute_accessors"
+require 'active_support/core_ext/module/attribute_accessors'
 
 module Slodd
   module Config
@@ -8,9 +8,9 @@ module Slodd
     mattr_writer :databases
 
     def self.defaults
-      self.path = "db/schema.rb"
-      self.username = "root"
-      self.host = "localhost"
+      self.path = 'db/schema.rb'
+      self.username = 'root'
+      self.host = 'localhost'
       self.databases = nil
     end
 
@@ -21,16 +21,16 @@ module Slodd
     end
 
     def self.database_settings
-      settings = { adapter: "mysql2", host: host, username: username }
+      settings = { adapter: 'mysql2', host: host, username: username }
       password ? settings.merge(password: password) : settings
     end
 
     def self.owner
-      github.split("/")[0] if github
+      github.split('/')[0] if github
     end
 
     def self.repo
-      github.split("/")[1] if github
+      github.split('/')[1] if github
     end
 
     def self.fetcher
@@ -55,7 +55,7 @@ module Slodd
         token: token,
         path: path,
         ref: ref,
-        url: url
+        url: url,
       }.delete_if { |_, v| v.nil? }
     end
   end
