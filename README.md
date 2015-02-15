@@ -1,7 +1,7 @@
 Schema Loading On Dependent Databases
 =====================================
 
-[![Build Status](https://travis-ci.org/errm/slodd.png?branch=v0.1.0)](https://travis-ci.org/errm/slodd)
+[![Build Status](https://travis-ci.org/errm/slodd.svg?branch=master)](https://travis-ci.org/errm/slodd)
 [![Gem Version](https://badge.fury.io/rb/slodd.svg)](http://badge.fury.io/rb/slodd)
 [![Code Climate](https://codeclimate.com/github/errm/slodd/badges/gpa.svg)](https://codeclimate.com/github/errm/slodd)
 [![Test Coverage](https://codeclimate.com/github/errm/slodd/badges/coverage.svg)](https://codeclimate.com/github/errm/slodd)
