@@ -173,6 +173,30 @@ describe Slodd::Config do
           expect(subject.database_settings).to eq settings
         end
       end
+
+      context 'with a database url in the environment' do
+        before do
+          ENV['DATABASE_URL'] = 'mysql2://nova:sekret@127.0.0.1/foo_bar'
+        end
+
+        after do
+          ENV['DATABASE_URL'] = nil
+        end
+
+        it 'returns the settings' do
+          settings = {
+            adapter: 'mysql2',
+            host: '127.0.0.1',
+            username: 'nova',
+            password: 'sekret',
+          }
+          expect(subject.database_settings).to eq settings
+        end
+
+        it 'sets the database' do
+          expect(subject.databases).to eq ['foo_bar']
+        end
+      end
     end
 
     describe '.host' do
