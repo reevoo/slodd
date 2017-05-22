@@ -1,6 +1,6 @@
 # encoding: utf-8
-require 'simplecov'
-require 'codeclimate-test-reporter'
+require "simplecov"
+require "codeclimate-test-reporter"
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
@@ -10,13 +10,13 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 SimpleCov.minimum_coverage 100
 SimpleCov.start
 
-require 'slodd'
-require 'stringio'
+require "slodd"
+require "stringio"
 
 RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.filter_run :focus
-  config.order = 'random'
+  config.order = "random"
 end
 
 module Slodd
@@ -56,5 +56,5 @@ ensure
 end
 
 def schema_path
-  File.join(File.dirname(__FILE__), 'support', 'schema.rb')
+  File.join(File.dirname(__FILE__), "support", "schema.rb")
 end

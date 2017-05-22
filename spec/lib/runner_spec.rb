@@ -1,20 +1,20 @@
 # encoding: utf-8
-require 'spec_helper'
+require "spec_helper"
 
 describe Slodd::Runner do
   subject { described_class }
 
-  describe '#run' do
+  describe "#run" do
     before do
       Slodd::Config.path = schema_path
-      Slodd::Config.databases = 'slodd_test'
+      Slodd::Config.databases = "slodd_test"
     end
 
     after do
       Slodd::Config.reset
     end
 
-    it 'creates the database ready for testing' do
+    it "creates the database ready for testing" do
       output = capture_stdout do
         subject.run!
       end
@@ -22,10 +22,10 @@ describe Slodd::Runner do
       expect(output).to match(/create_database\(slodd_test\)/)
 
       expect(Test.count).to eq 0
-      Test.create(name: 'James')
+      Test.create(name: "James")
 
       expect(Test.count).to eq 1
-      expect(Test.last.name).to eq 'James'
+      expect(Test.last.name).to eq "James"
       expect(`mysql -uroot -e "show databases;"`).to match(/slodd_test/)
 
       capture_stdout do
@@ -35,12 +35,12 @@ describe Slodd::Runner do
       expect(Test.count).to eq 0
     end
 
-    context 'with multiple databases' do
+    context "with multiple databases" do
       before do
-        Slodd::Config.databases = 'slodd_test slodd_test_2'
+        Slodd::Config.databases = "slodd_test slodd_test_2"
       end
 
-      it 'creates both databases' do
+      it "creates both databases" do
         output = capture_stdout do
           subject.run!
         end
@@ -54,13 +54,13 @@ describe Slodd::Runner do
       end
     end
 
-    context 'when something is failing' do
+    context "when something is failing" do
       before do
         allow(ActiveRecord::Base).to receive(:establish_connection)
-          .and_raise(Mysql2::Error, 'mysql error')
+          .and_raise(Mysql2::Error, "mysql error")
       end
 
-      it 'ouputs a usefull message to stderr' do
+      it "ouputs a usefull message to stderr" do
         message = capture_stderr do
           subject.run!
         end

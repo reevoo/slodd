@@ -1,17 +1,17 @@
 # encoding: utf-8
-require 'active_support/core_ext/module/attribute_accessors'
-require 'uri'
+require "active_support/core_ext/module/attribute_accessors"
+require "uri"
 
 module Slodd
   module Config
     mattr_accessor :path, :github, :username, :password,
-                   :host, :url, :token, :ref
+      :host, :url, :token, :ref
     mattr_writer :databases
 
     def self.defaults
-      self.path = 'db/schema.rb'
-      self.username = 'root'
-      self.host = 'localhost'
+      self.path = "db/schema.rb"
+      self.username = "root"
+      self.host = "localhost"
       self.databases = nil
     end
 
@@ -27,11 +27,11 @@ module Slodd
     end
 
     def self.owner
-      github.split('/')[0] if github
+      github.split("/")[0] if github
     end
 
     def self.repo
-      github.split('/')[1] if github
+      github.split("/")[1] if github
     end
 
     def self.fetcher
@@ -74,12 +74,12 @@ module Slodd
     end
 
     def self.database_uri
-      return unless ENV['DATABASE_URL']
-      @_database_uri ||= URI.parse(ENV['DATABASE_URL'])
+      return unless ENV["DATABASE_URL"]
+      @_database_uri ||= URI.parse(ENV["DATABASE_URL"])
     end
 
     def self.settings_from_args
-      settings = { adapter: 'mysql2', host: host, username: username }
+      settings = { adapter: "mysql2", host: host, username: username }
       settings.merge!(password: password) if password
       settings
     end

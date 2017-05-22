@@ -1,23 +1,23 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
-require 'slodd'
-require 'optparse'
+require "slodd"
+require "optparse"
 
 OptionParser.new do |opt|
-  opt.on('-g', '--github USER/REPO', 'github repo') do |g|
+  opt.on("-g", "--github USER/REPO", "github repo") do |g|
     Slodd::Config.github = g
   end
 
-  opt.on('-t', '--token TOKEN', 'github token') do |t|
+  opt.on("-t", "--token TOKEN", "github token") do |t|
     Slodd::Config.token = t
   end
 
-  opt.on('-r', '--ref REF', 'github ref') do |r|
+  opt.on("-r", "--ref REF", "github ref") do |r|
     Slodd::Config.ref = r
   end
 
-  opt.on('-f', '--file-schema-path PATH', 'Path to schema.rb') do |f|
+  opt.on("-f", "--file-schema-path PATH", "Path to schema.rb") do |f|
     Slodd::Config.path = f
   end
 end.parse!
