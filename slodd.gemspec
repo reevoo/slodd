@@ -18,8 +18,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(/^(test|spec|features)\//)
   gem.require_paths = ['lib']
   gem.add_dependency('activerecord', '~> 3.2.22')
-  gem.add_dependency('mysql2')
-  gem.add_dependency('activerecord-mysql2-adapter')
+  gem.add_dependency('mysql2', '~> 0.3.10')
   gem.add_development_dependency('rspec')
   gem.add_development_dependency('rake')
   gem.add_development_dependency('codeclimate-test-reporter')
