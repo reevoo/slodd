@@ -1,4 +1,4 @@
 # encoding: utf-8
 module Slodd
-  VERSION = "0.1.8"
+  VERSION = "0.1.8".freeze
 end

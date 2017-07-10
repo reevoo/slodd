@@ -60,8 +60,6 @@ module Slodd
       }.delete_if { |_, v| v.nil? }
     end
 
-    private
-
     def self.settings_from_url
       return unless database_uri
       self.databases = database_uri.path[1..-1]
@@ -80,7 +78,7 @@ module Slodd
 
     def self.settings_from_args
       settings = { adapter: "mysql2", host: host, username: username }
-      settings.merge!(password: password) if password
+      settings[:password] = password if password
       settings
     end
   end

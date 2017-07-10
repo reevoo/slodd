@@ -1,12 +1,7 @@
 # encoding: utf-8
 require "simplecov"
-require "codeclimate-test-reporter"
 
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-  SimpleCov::Formatter::HTMLFormatter,
-  CodeClimate::TestReporter::Formatter
-]
-
+SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
 SimpleCov.minimum_coverage 100
 SimpleCov.start
 

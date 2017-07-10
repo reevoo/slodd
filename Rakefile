@@ -5,4 +5,4 @@ require "reevoocop/rake_task"
 ReevooCop::RakeTask.new(:reevoocop)
 RSpec::Core::RakeTask.new(:spec)
 
-task default: [:spec, :reevoocop]
+task default: %i[spec reevoocop]

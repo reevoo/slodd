@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.description   = "Schema Loading On Dependent Databases"
   gem.summary       = "Schema Loading On Dependent Databases"
   gem.homepage      = "https://github.com/errm/slodd"
-  gem.licenses        = ['MIT']
+  gem.licenses      = ["MIT"]
 
   gem.files         = `git ls-files`.split($RS)
   gem.executables   = gem.files.grep(/^bin\//).map { |f| File.basename(f) }
@@ -22,6 +22,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency("mysql2", "~> 0.3.10")
   gem.add_development_dependency("rspec")
   gem.add_development_dependency("rake")
-  gem.add_development_dependency("codeclimate-test-reporter")
   gem.add_development_dependency("reevoocop")
+  gem.add_development_dependency("simplecov")
 end
