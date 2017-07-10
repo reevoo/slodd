@@ -12,6 +12,7 @@ Gem::Specification.new do |gem|
   gem.description   = "Schema Loading On Dependent Databases"
   gem.summary       = "Schema Loading On Dependent Databases"
   gem.homepage      = "https://github.com/errm/slodd"
+  gem.licenses        = ['MIT']
 
   gem.files         = `git ls-files`.split($RS)
   gem.executables   = gem.files.grep(/^bin\//).map { |f| File.basename(f) }
