@@ -15,7 +15,7 @@ module Slodd
     def run!
       Config.databases.each do |database|
         create_database(database)
-        eval(schema) # rubocop:disable Lint/Eval
+        eval(schema) # rubocop:disable Security/Eval
       end
     end
 
