@@ -1,5 +1,6 @@
 # encoding: utf-8
 require "active_record"
+require "active_record/connection_adapters/abstract_mysql_adapter"
 require "mysql2"
 
 module Slodd
@@ -10,6 +11,8 @@ module Slodd
 
     def initialize
       self.schema = Config.fetcher.schema
+      # patch AR to work with mysql 5.7
+      ActiveRecord::ConnectionAdapters::AbstractMysqlAdapter::NATIVE_DATABASE_TYPES[:primary_key] = "int(11) auto_increment PRIMARY KEY" # rubocop:disable Metrics/LineLength
     end
 
     def run!
