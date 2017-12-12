@@ -70,5 +70,17 @@ describe Slodd::Github do
       allow(schema).to receive(:read).and_return("the schema")
       expect(subject.schema).to eq "the schema"
     end
+
+    context "with an invalid or unauthorized token" do
+      let(:token) { "invalid-or-unauthorized-token" }
+
+      it "raises exception on Github 404" do
+        allow(subject).to receive(:open).and_raise(OpenURI::HTTPError.new("404 not found", nil))
+        expect { subject.schema }.to raise_exception(
+          Slodd::GithubError,
+          "Check your credentials and the schema file location!",
+        )
+      end
+    end
   end
 end

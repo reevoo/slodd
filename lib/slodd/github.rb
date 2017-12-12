@@ -15,6 +15,8 @@ module Slodd
 
     def schema
       @schema ||= open(url, headers).read
+    rescue OpenURI::HTTPError
+      raise Slodd::GithubError, "Check your credentials and the schema file location!"
     end
 
     private
@@ -24,7 +26,7 @@ module Slodd
     end
 
     def branch
-      "?ref=#{ref}" if ref.present?
+      "?ref=#{ref}" unless ref.nil?
     end
 
     def headers
